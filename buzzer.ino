@@ -1,20 +1,13 @@
-// Pin connected to the IR sensor
-const int irPin = 7;
-int value = 0;
-void setup() {
-  Serial.begin(9600);
-  pinMode(irPin, INPUT);
+
+const int buzzer = 4; //buzzer to arduino pin 9
+
+void setup(){
+  pinMode(buzzer, OUTPUT); // Set buzzer - pin 9 as an output
 }
 
-void loop() {
-  // Read the state of the IR sensor
-  int irState = digitalRead(irPin);
-
-  // Check if the IR sensor reads LOW
-  if (irState == LOW) {
-    value = 2;
-    Serial.println(value);
-  }
-
-  delay(100); // Delay for stability
+void loop(){
+  tone(buzzer, 1000); // Send 1KHz sound signal...
+  delay(1000);        // ...for 1 sec
+  noTone(buzzer);     // Stop sound...
+  delay(1000);        // ...for 1sec
 }
